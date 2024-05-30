@@ -26,6 +26,7 @@ export class AuthGuard implements CanActivate {
           token, { secret: process.env.JWT_SECRET }
         );
     }catch(error){
+      console.log(error);
       throw new UnauthorizedException('Invalid token');
     }
     const user = await this.authService.findById(payload.id);
