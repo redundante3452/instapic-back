@@ -5,6 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule } from '@nestjs/config';
+import { Follower } from 'src/accounts/entities/followers.entity';
+import { Posts } from 'src/accounts/entities/posts.entity';
+import { Comment } from 'src/accounts/entities/comments.entity';
 
 @Module({
   controllers: [AuthController],
@@ -12,7 +15,10 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     ConfigModule.forRoot(),
     TypeOrmModule.forFeature([
-      User
+      User,
+      Comment,
+      Follower,
+      Posts
     ]),
     JwtModule.register({
       global:true,

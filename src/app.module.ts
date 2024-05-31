@@ -1,9 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Module, Post } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { Follower } from './accounts/entities/followers.entity';
+import { Posts } from './accounts/entities/posts.entity';
 
 @Module({
   imports: [
@@ -17,7 +19,6 @@ import { AuthModule } from './auth/auth.module';
       password: process.env.APP_DB_PASSWORD,
       autoLoadEntities:true,
       synchronize:true
-      
     }),
     AuthModule
   ],
